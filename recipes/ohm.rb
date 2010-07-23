@@ -247,7 +247,7 @@ create_file 'lib/thors/redis.thor', I(%{
 
     def verify_config(env)
       verify_config_redis env
-      verify "#{root_path}/config/redis/#{env}.example.conf"
+      verify "\#{root_path}/config/redis/\#{env}.example.conf"
     end
   end
 })
