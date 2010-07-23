@@ -239,7 +239,7 @@ create_file 'lib/thors/redis.thor', I(%{
   class Monk < Thor
     desc "redis ENV", "Start the redis server in the supplied environment"
     def redis(env = ENV['RACK_ENV'] || 'development')
-      verify_config env
+      verify "#{root_path}/config/redis/#{env}.example.conf"
       exec "redis-server \\"\#{root_path}/config/redis/\#{env}.conf\\""
     end
   end
