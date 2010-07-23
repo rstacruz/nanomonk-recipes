@@ -274,6 +274,11 @@ add_config I(%{
     <<: *defaults
 })
 
+add_test_setup I(%{
+  # Remove this if you don't want a fresh database everytime.
+  Ohm.flush
+})
+
 caveats I(%{
   To start the redis server:
       monk redis
