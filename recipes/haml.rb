@@ -15,7 +15,7 @@ create_file 'app/views/home.haml', I(%{
   %h1 Hello world!
 })
 
-create_file 'app/views/site.rb', I(%{
+create_file 'app/routes/site.rb', I(%{
   class Main
     get '/' do
       haml :home

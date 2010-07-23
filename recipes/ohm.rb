@@ -283,3 +283,10 @@ caveats I(%{
   To start the redis server:
       monk redis
 })
+
+append_file '.gitignore', I(%{
+  /config/redis/development.conf
+  /config/redis/test.conf
+  /db/redis/development
+  /db/redis/test
+})
