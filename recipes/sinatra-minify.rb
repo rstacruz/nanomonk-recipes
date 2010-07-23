@@ -23,6 +23,6 @@ create_file 'config/assets.yml', I(%{
 
 
 if File.exists?('app/views/layout.haml')
-  inject_into_file 'app/views/layout.haml', '    != css_assets :base', :after => /^  %title.*$/
+  inject_into_file 'app/views/layout.haml', '    != css_assets :base', :before => '%body'
   append_file      'app/views/layout.haml', '    != js_assets :base'
 end

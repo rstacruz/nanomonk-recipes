@@ -7,7 +7,6 @@ create_file 'app/views/layout.haml', I(%{
     %head
       %meta(charset='UTF-8')
       %title Document
-
     %body
       != yield
 })
