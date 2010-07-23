@@ -21,6 +21,9 @@ create_file 'config/assets.yml', I(%{
       #- app.js
 })
 
+add_class_def I(%{
+  register Sinatra::Minify
+})
 
 if File.exists?('app/views/layout.haml')
   inject_into_file 'app/views/layout.haml', '    != css_assets :base', :before => '%body'
