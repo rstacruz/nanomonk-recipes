@@ -298,6 +298,7 @@ notes "redis", I(%{
 append_file '.gitignore', I(%{
   /config/redis/development.conf
   /config/redis/test.conf
+  /config/redis.yml
   /db/redis/development
   /db/redis/test
 })
