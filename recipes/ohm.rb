@@ -3,7 +3,7 @@ gem_install "ohm"
 add_require "ohm"
 
 add_initializer %{
-  # Connect to redis database.
+  # Connect to the redis database.
   Ohm.connect(appconfig(:redis))
 }
 
