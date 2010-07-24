@@ -28,6 +28,18 @@ add_class_def I(%{
 if File.exists?('app/views/layout.haml')
   inject_into_file 'app/views/layout.haml', '    != css_assets :base', :before => '%body'
   append_file      'app/views/layout.haml', '    != js_assets :base'
+else
+  caveats I(%{
+    Adding assets:
+
+      A templating gem wasn't found in your project.
+      You will need to add the following to your templates:
+
+        <%= css_assets :base %>    (right before </head>)
+        <%= js_assets :base %>     (right before </body>)
+
+      Refer to the sinatra-minify documentation for more info.
+  })
 end
 
 notes "minify", I(%{
