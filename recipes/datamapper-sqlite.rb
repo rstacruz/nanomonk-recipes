@@ -29,17 +29,12 @@ empty_directory 'db/sqlite/production'
 
 create_file 'lib/thors/datamapper.thor', I(%{
   class Monk < Thor
-  private
-    alias verify_config_datamapper verify_config
-    def verify_config(env)
-      verify_config_datamapper env
-      verify "#\{root_path\}/config/datamapper.example.conf"
-    end
+    add_config_file 'config/datamapper.example.yml'
   end
 })
 
 add_initializer I(%{
-  DataMapper.setup(:default, config(:datamapper))
+  DataMapper.setup(:default, app_config(:datamapper))
 })
 
 add_class_def I(%{
