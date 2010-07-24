@@ -4,7 +4,7 @@ add_require "ohm"
 
 add_initializer %{
   # Connect to the redis database.
-  Ohm.connect(appconfig(:redis))
+  Ohm.connect(app_config(:redis, :redis))
 }
 
 create_file 'config/redis/development.example.conf', I(%{
@@ -240,22 +240,18 @@ create_file 'lib/thors/redis.thor', I(%{
     desc "redis ENV", "Start the redis server in the supplied environment"
     def redis(env = ENV['RACK_ENV'] || 'development')
       verify_config(env)
-      run "redis-server \\"\#{root_path}/config/redis/\#{env}.conf\\""
+      run "redis-server \\"#\{root_path\}/config/redis/#\{env\}.conf\\""
     end
-  private
-    alias verify_config_redis verify_config
 
-    def verify_config(env)
-      verify_config_redis env
-      verify "\#{root_path}/config/redis/\#{env}.example.conf"
-    end
+    add_config_file "config/redis/%{env}.example.conf"
+    add_config_file "config/redis.yml"
   end
 })
 
 empty_directory 'db/redis/development'
 empty_directory 'db/redis/test'
 
-add_config I(%{
+create_file 'config/ohm.example.yml', I(%{
   defaults: &defaults
     :log_level: warn
     :redis:
