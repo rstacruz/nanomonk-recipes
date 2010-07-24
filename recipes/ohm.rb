@@ -279,9 +279,24 @@ add_test_setup I(%{
   Ohm.flush
 })
 
-caveats I(%{
-  To start the redis server:
-      monk redis
+notes "redis", I(%{
+  Installing redis
+  ----------------
+
+  First: install Redis 2.0rc1, if you haven't yet:
+  http://code.google.com/p/redis/
+
+    curl http://redis.googlecode.com/files/redis-2.0.0-rc1.tar.gz | tar -zxvf -
+    cd redis-2.0.0-rc1
+    make
+    sudo cp redis-{server,cli,benchmark,check-aof,check-dump} /usr/local/bin
+    cd ..
+    rm -rf redis-2.0.0-rc1
+
+  Starting the redis server
+  -------------------------
+
+    monk redis
 })
 
 append_file '.gitignore', I(%{

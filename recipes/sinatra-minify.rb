@@ -30,7 +30,13 @@ if File.exists?('app/views/layout.haml')
   append_file      'app/views/layout.haml', '    != js_assets :base'
 end
 
-caveats I(%{
-  To compress:
+notes "minify", I(%{
+  Minifying files
+  ---------------
+
+  To generate the minified files, do:
+
       rake minify
+
+  This will put the packaged minified CSS/JS files into the public/ directory.
 })
