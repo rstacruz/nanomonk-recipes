@@ -1,8 +1,10 @@
 gem_install 'datamapper'
 gem_install 'sqlite3-ruby'
+gem_install 'dm-sqlite-adapter'
 
 add_require 'dm-core'
 add_require 'dm-validations'
+add_require 'dm-sqlite-adapter'
 
 create_file 'config/datamapper.example.yml', I(%{
   defaults: &defaults
