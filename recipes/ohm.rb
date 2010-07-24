@@ -244,14 +244,14 @@ create_file 'lib/thors/redis.thor', I(%{
     end
 
     add_config_file "config/redis/%{env}.example.conf"
-    add_config_file "config/redis.yml"
+    add_config_file "config/redis.example.yml"
   end
 })
 
 empty_directory 'db/redis/development'
 empty_directory 'db/redis/test'
 
-create_file 'config/ohm.example.yml', I(%{
+create_file 'config/redis.example.yml', I(%{
   defaults: &defaults
     :log_level: warn
     :redis:
