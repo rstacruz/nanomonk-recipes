@@ -279,15 +279,19 @@ notes "redis", I(%{
   Installing redis
   ----------------
 
-  First: install Redis 2.0rc1, if you haven't yet:
+  First: install Redis, if you haven't yet.
   http://code.google.com/p/redis/
 
+      # For those using Mac/Homebrew:
+      brew install redis
+
+      # For everyone else:
       curl http://redis.googlecode.com/files/redis-2.0.0-rc1.tar.gz | tar -zxvf -
-      cd redis-2.0.0-rc1
+      cd redis-*
       make
       sudo cp redis-{server,cli,benchmark,check-aof,check-dump} /usr/local/bin
       cd ..
-      rm -rf redis-2.0.0-rc1
+      rm -rf redis-*
 
   Starting the redis server
   -------------------------
